@@ -1,0 +1,252 @@
+/* Results container styling */
+#results {
+    background-color: #E8E8ED;
+    border-radius: 10px;
+    padding: 20px 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+    max-width: 800px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Main statistics section */
+#results h2 {
+    color: rgb(29, 29, 31);
+    border-bottom: 2px solid rgb(29, 29, 31);
+    padding-bottom: 8px;
+    margin-top: 0;
+    font-size: 1.6rem;
+}
+
+#results p {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+    margin: 6px 0;
+    background-color: #E8E8ED;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+#results p:hover {
+    transform: translateX(5px);
+    background-color: #f0f7ff;
+}
+
+/* Word type counts (pronouns, prepositions, articles) */
+#results ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#results li {
+    background-color: #E8E8ED;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+#results li:hover {
+    background-color: #E8E8ED;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Section titles for word types */
+#results h2:not(:first-child) {
+    margin-top: 30px;
+    font-size: 1.4rem;
+    color: rgb(29, 29, 31);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #results ul {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    #results {
+        padding: 15px;
+    }
+}
+
+/* Empty state styling */
+#results:empty {
+    display: none;
+}
+
+/* Print-friendly adjustments */
+@media print {
+    #results {
+        box-shadow: none;
+        background-color: #E8E8ED;
+    }
+    
+    #results li, #results p {
+        box-shadow: none;
+        border: 1px solid #E8E8ED;
+    }
+}
+
+
+
+/* Text Analyzer Container */
+.text-analyzer-container {
+    width: 95%;
+    background-color: #E8E8ED;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    transition: all 0.3s;
+    position: relative;
+    top: 0;
+}
+
+.text-analyzer-container:hover {
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.15);
+    top: -5px; /* Added lift animation */
+}
+
+/* Title */
+h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: rgb(29, 29, 31);
+}
+
+/* Textarea */
+#input {
+    width: 100%;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: rgb(58, 58, 58);
+    transition: all 0.3s;
+    resize: vertical;
+    min-height: 120px;
+}
+
+#input:focus {
+    outline: none;
+    border-color: rgb(29, 29, 31);
+    box-shadow: 0 0 5px rgba(29, 29, 31, 0.2);
+}
+
+#input::placeholder {
+    color: #999;
+}
+
+/* Button */
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    background-color: rgb(29, 29, 31);
+    color: #E8E8ED;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Results section */
+#results {
+    margin-top: 25px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+#results h2 {
+    font-size: 20px;
+    color: rgb(29, 29, 31);
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+    margin-top: 0;
+    text-align: left;
+}
+
+#results p {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    color: rgb(58, 58, 58);
+}
+
+#results p:hover {
+    transform: translateX(5px);
+    background-color: #f0f0f5;
+}
+
+/* Word type lists */
+#results ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#results li {
+    background-color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    color: rgb(58, 58, 58);
+}
+
+#results li:hover {
+    background-color: #f0f0f5;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    #results ul {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    #input {
+        min-height: 100px;
+    }
+}
