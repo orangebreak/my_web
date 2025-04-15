@@ -20,5 +20,5 @@
 .about-div:hover {
     box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.15);
     color: rgb(29, 29, 31);
-    top: -5px; /* Added lift animation */
+    top: -5px; 
 }

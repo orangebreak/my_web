@@ -5,13 +5,13 @@ body {
 
 
 header {
-     display: flex;                         /* Aligns children (h1, button, nav) in a row */
+     display: flex;                        
     background-color: rgb(29, 29, 31);
     color: #E8E8ED;
-    align-items: center;                   /* Vertically centers elements */   
+    align-items: center;                     
     justify-content: space-between;
     cursor: default;
-    flex-wrap: wrap;                        /* f the items don’t fit in one row, move the extra items onto the next line */
+    flex-wrap: wrap;                       
     flex-direction: row;
 }
 
@@ -19,6 +19,7 @@ header {
 
 .welcome-text {
     margin-left: 10px;
+    color: #E8E8ED;
 }
 
 
@@ -72,7 +73,7 @@ nav a:active {
 
 
 .menu-toggle {
-    display: none;      /* hidden on large screens */
+    display: none;     
     background: none;
     border: none;
     cursor: pointer;
@@ -124,7 +125,7 @@ nav a:active {
     nav.show {
         display: flex;
         opacity: 1;
-        max-height: 500px; /* enough to show all links */
+        max-height: 500px;
     }
   
     nav.show a {

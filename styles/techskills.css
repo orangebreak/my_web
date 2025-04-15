@@ -1,7 +1,7 @@
 .about-div {
     padding: 20px;
     margin-bottom: 30px;
-    position: relative; /* Ensure relative positioning for z-index context */
+    position: relative; 
 }
 
 .skills-list {
@@ -12,7 +12,7 @@
     gap: 18px;
     justify-content: center;
     margin: 20px 0;
-    position: relative; /* Establish stacking context */
+    position: relative; 
 }
 
 .skill-box {
@@ -30,7 +30,7 @@
     justify-content: center;
     font-weight: 500;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    z-index: 1; /* Base z-index for all buttons */
+    z-index: 1; 
 }
 
 .skill-description {
@@ -50,11 +50,11 @@
     transition: all 0.3s ease;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Very high z-index to appear on top of everything */
-    pointer-events: none; /* Prevents the tooltip from interfering with hovering */
+    z-index: 1000; 
+    pointer-events: none; 
 }
 
-/* Arrow pointing to the skill box */
+
 .skill-description:before {
     content: '';
     position: absolute;
@@ -74,7 +74,7 @@
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     border-color: #2d2d2d;
-    z-index: 100; /* Increase z-index on hover to be above other buttons */
+    z-index: 100; 
 }
 
 .skill-box:hover .skill-description {
@@ -83,7 +83,6 @@
     transform: translateX(-50%) translateY(0);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .skill-box {
         width: 120px;

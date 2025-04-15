@@ -38,20 +38,20 @@
     margin-bottom: 10px;
 }
 
-/* Added hover effects with lift animation */
+
 .image-container:hover {
     box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.15);
     color: rgb(29, 29, 31);
     transform: translateY(-5px);
 }
 
-/* Added hover effect for individual images */
+
 .pic:hover {
     transform: translateY(-5px);
     box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Added hover effect for images in the ruwais and tiru sections */
+
 .ruwais-pic img:hover, .tiru-pic img:hover {
     transform: translateY(-5px);
     box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);

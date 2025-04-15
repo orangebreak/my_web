@@ -147,78 +147,92 @@
         });
 
 
-        window.addEventListener('load', function() {
-            const now = new Date();
+        window.addEventListener('load', function () {
             console.log(get_time() + ' page viewed');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const type = get_element_type(entry.target);
+                    console.log(`${get_time()} viewed ${type}`);
+                }
+            });
+        }, {
+            threshold: 0.5 
+        });
+
+       
+        window.addEventListener('DOMContentLoaded', () => {
+            const trackables = document.querySelectorAll('img, p, h2, h4, a, button, div, span, header');
+            trackables.forEach(el => observer.observe(el));
         });
 
 
 
+        
+
         function analyze_text() {
             const text = document.getElementById('input').value;
+
             const letters = (text.match(/[a-zA-Z]/g) || []).length;
-
             const words = (text.split(/\s+/) || []).filter(word => word.length > 0).length;
-
             const spaces = (text.match(/\s/g) || []).length;
-
             const newlines = (text.match(/\n/g) || []).length;
-
             const special_symbols = (text.match(/[^a-zA-Z0-9\s]/g) || []).length;
-
 
             const pronouns = ['i', 'you', 'he', 'she', 'it', 'we', 'they', 'me', 'him', 'her', 'us', 'them'];
             const prepositions = ['in', 'on', 'at', 'by', 'for', 'with', 'to', 'from', 'of', 'about'];
             const articles = ['a', 'an'];
 
-            const tokens = text.toLowerCase().split(/\s+/).filter(word => word.length > 0);
-            
+            const cleanedTokens = text.toLowerCase().split(/\s+/).map(token =>
+                token.replace(/[.,!?;:()"'`]/g, '')
+            ).filter(token => token.length > 0);
+
             const pronoun_counts = {};
-            pronouns.forEach(pronoun => pronoun_counts[pronoun] = 0); 
-            tokens.forEach(token => {
+            pronouns.forEach(p => pronoun_counts[p] = 0);
+            cleanedTokens.forEach(token => {
                 if (pronouns.includes(token)) {
                     pronoun_counts[token]++;
                 }
             });
-
             let pro_output = '<h2>Pronoun Counts</h2><ul>';
-            for (const pronoun in pronoun_counts) {
-                if (pronoun_counts[pronoun] > 0) {
-                    pro_output += `<li>${pronoun}: ${pronoun_counts[pronoun]}</li>`;
+            for (const p in pronoun_counts) {
+                if (pronoun_counts[p] > 0) {
+                    pro_output += `<li>${p}: ${pronoun_counts[p]}</li>`;
                 }
             }
             pro_output += '</ul>';
-            
 
             const prepo_counts = {};
-            prepositions.forEach(prep => prepo_counts[prep] = 0);
-            tokens.forEach(token => {
+            prepositions.forEach(p => prepo_counts[p] = 0);
+            cleanedTokens.forEach(token => {
                 if (prepositions.includes(token)) {
                     prepo_counts[token]++;
                 }
             });
             let prepo_out = '<h2>Preposition Counts</h2><ul>';
-            for (const prep in prepo_counts) {
-                if (prepo_counts[prep] > 0) {
-                    prepo_out += `<li>${prep}: ${prepo_counts[prep]}</li>`;
+            for (const p in prepo_counts) {
+                if (prepo_counts[p] > 0) {
+                    prepo_out += `<li>${p}: ${prepo_counts[p]}</li>`;
                 }
             }
             prepo_out += '</ul>';
 
-            const aritcle_count = {};
-            articles.forEach(article => aritcle_count[article] = 0);
-            tokens.forEach(token => {
+            const article_count = {};
+            articles.forEach(a => article_count[a] = 0);
+            cleanedTokens.forEach(token => {
                 if (articles.includes(token)) {
-                    aritcle_count[token]++;
+                    article_count[token]++;
                 }
             });
-            let aritcle_out = '<h2>Indefinite Article Counts</h2><ul>';
-            for (const article in aritcle_count) {
-                if (aritcle_count[article] > 0) {
-                    aritcle_out += `<li>${article}: ${aritcle_count[article]}</li>`;
+            let article_out = '<h2>Indefinite Article Counts</h2><ul>';
+            for (const a in article_count) {
+                if (article_count[a] > 0) {
+                    article_out += `<li>${a}: ${article_count[a]}</li>`;
                 }
             }
-            aritcle_out += '</ul>';
+            article_out += '</ul>';
 
             const output = `
                 <h2>Text Statistics :</h2>
@@ -229,10 +243,14 @@
                 <p>special symbols: ${special_symbols}</p>
                 ${pro_output}
                 ${prepo_out}
-                ${aritcle_out}
+                ${article_out}
             `;
             document.getElementById('results').innerHTML = output;
         }
+
+
+        
+
     </script>
 </body>
 </html>
