@@ -1,0 +1,24 @@
+.about-div {
+    width: 95%;
+    background-color: #E8E8ED;
+    box-sizing: border-box;
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    color: rgb(58, 58, 58);
+    transition: all 0.3s;
+    position: relative;
+    top: 0;
+}
+
+.about-para {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.about-div:hover {
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.15);
+    color: rgb(29, 29, 31);
+    top: -5px; /* Added lift animation */
+}

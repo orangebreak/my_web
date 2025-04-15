@@ -1,0 +1,99 @@
+.section-div {
+    width: 95%;
+    background-color: #E8E8ED;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    transition: all 0.3s;
+    position: relative;
+    top: 0;
+}
+
+.section-div:hover {
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.15);
+    top: -5px; /* Added lift animation */
+}
+
+.section-div h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: rgb(29, 29, 31);
+}
+
+.section-para {
+    text-align: justify;
+    line-height: 1.6;
+    color: rgb(58, 58, 58);
+    margin-bottom: 15px;
+}
+
+/* Achievement Boxes Styles */
+.achievements-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.achievement-box {
+    background-color: #E8E8ED;
+    border: 1px solid rgb(29, 29, 31);
+    border-radius: 5px;
+    padding: 15px 25px;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 180px;
+    max-width: 220px;
+    cursor: default;
+    position: relative;
+    top: 0;
+}
+
+.achievement-box:hover {
+    background-color: rgb(29, 29, 31);
+    color: #E8E8ED;
+    transform: scale(1.05);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+    top: -3px; /* Added lift animation (smaller lift for boxes that already have scale) */
+}
+
+.achievement-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.achievement-box:hover h3,
+.achievement-box:hover .achievement-score,
+.achievement-box:hover .achievement-desc {
+    color: #E8E8ED;
+}
+
+.achievement-score {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1d1d1f;
+    margin: 5px 0;
+}
+
+.achievement-desc {
+    color: #3a3a3a;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .achievements-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .achievement-box {
+        width: 100%;
+        max-width: 300px;
+    }
+}

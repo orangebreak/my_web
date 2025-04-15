@@ -1,5 +1,238 @@
 <!DOCTYPE html>
+<html>
 <head>
-
-  
+    <title>ISS A3</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/pfp.css">
+    <link rel="stylesheet" href="styles/images.css">
+    <link rel="stylesheet" href="styles/techskills.css">
+    <link rel="stylesheet" href="styles/education.css">
 </head>
+<body>
+    <header>
+        <div class="header-left">
+            <h2 class="welcome-text">Welcome</h2>
+            <button class="menu-toggle">☰</button> <!-- hamburger icon -->
+        </div>
+        <nav>
+            <a href="#" onclick="loadIndexContent()">About</a>
+            <a href="#" onclick="loadSection('education.html')">Education</a>
+            <a href="#" onclick="loadSection('techskills.html')">Tech Skills</a>
+            <a href="#" onclick="loadSection('textbox.html')">Text Box</a>
+            <a href="cv.pdf" target="_blank" class="cv-link">CV</a>
+        </nav>
+    </header>
+
+    <br>
+
+    <div id="content-section">
+        <div class="about-div">
+            <h2>About Myself</h2>
+            <p class="about-para">Hi, I'm Rahul, a 19-year-old Computer Science student at the International Institute of Information Technology, Hyderabad. I spent the last 8 years in the UAE, where I completed my schooling. I scored 95% in my 12th CBSE board exams, got a 95 percentile in JEE Mains, and scored 1540 on the SAT. Outside of academics, I enjoy learning about new technology and having a good cup of coffee.</p>
+
+        </div>
+        <br>
+        <div>
+            <h2 class="pictures-title">Pictures</h2>
+        </div>
+        <div class="profile-container">
+            <img src="images/pfp.jpg" alt="Profile Picture" class="pfp">
+            <h4 class="my-name">Rahul Kannan Rajesh</h4>
+            <p class="year">BTech in C.S</p>
+        </div>
+        <div class="image-container">
+            <div class="image-title">
+                <p>U.A.E (Currently living)</p>
+            </div>
+            <div class="ruwais-pic">
+                <img src="images/ruwais1.jpeg" alt="Ruwais Picture - 1" class="pic">
+                <img src="images/ruwais2.jpeg" alt="Ruwais Picture - 2" class="pic">
+            </div>
+            <br>
+            <div class="image-title">
+                <p>Tamil Nadu (Birth place)</p>
+            </div>
+            <div class="tiru-pic">
+                <img src="images/tiru1.jpg" alt="Tiruvanamalai-1" class="pic">
+                <img src="images/tiru2.jpeg" alt="Tiruvanamalai-2" class="pic">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+
+        function loadSection(fileName) {
+            fetch(fileName)
+                .then(response => {
+                    if (!response.ok) throw new Error("Network error");
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById("content-section").innerHTML = data;
+                })
+                .catch(error => {
+                    document.getElementById("content-section").innerHTML = "<p>Failed to load section.</p>";
+                    console.error(error);
+                });
+        }
+
+        function loadIndexContent() {
+            document.getElementById("content-section").innerHTML = `
+                <div class="about-div">
+                    <h2>About Myself</h2>
+                    <p class="about-para">Hi! I’m Rahul, a 19-year-old Computer Science student at the International Institute of Information Technology, Hyderabad. I’ve spent the last 8 years in the UAE, where I completed my schooling with flying colors—scoring 95% in my 12th CBSE boards and a 95 percentile in JEE Mains. Oh, and I aced the SAT with a 1540! When I’m not coding, I’m probably exploring new tech or enjoying a good cup of coffee. I’m all about learning, growing, and bringing a bit of fun into everything I do!</p>
+                </div>
+                <br>
+                <div>
+                    <h2 class="pictures-title">Pictures</h2>
+                </div>
+                <div class="profile-container">
+                    <img src="images/pfp.jpg" alt="Profile Picture" class="pfp">
+                    <h4 class="my-name">Rahul Kannan Rajesh</h4>
+                    <p class="year">BTech in C.S</p>
+                </div>
+                <div class="image-container">
+                    <div class="image-title"><p>U.A.E</p></div>
+                    <div class="ruwais-pic">
+                        <img src="images/ruwais1.jpeg" alt="Ruwais Picture - 1" class="pic">
+                        <img src="images/ruwais2.jpeg" alt="Ruwais Picture - 2" class="pic">
+                    </div>
+                    <br>
+                    <div class="image-title"><p>Tamil Nadu</p></div>
+                    <div class="tiru-pic">
+                        <img src="images/tiru1.jpg" alt="Tiruvanamalai-1" class="pic">
+                        <img src="images/tiru2.jpeg" alt="Tiruvanamalai-2" class="pic">
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+
+
+    <script>
+        // gets element type
+        function get_element_type(element) {
+            const tag = element.tagName.toLowerCase();
+            if (tag === 'img') return 'image';
+            if (tag === 'p') return 'text';
+            if (tag === 'h2') return 'h2';
+            if (tag === 'h4') return 'h4';
+            if (tag === 'a') return 'link';
+            if (tag === 'button') return 'button';
+            if (tag === 'div') return 'div';
+            if (tag === 'span') return 'span';
+            if (tag === 'header') return 'header';
+            return 'other';
+        }
+        
+        // cleans time stamp
+        function get_time() {
+            const now = new Date();
+            return now.toISOString().replace('T', ' ').split('.')[0];
+        }
+
+        document.addEventListener('click', function(event) {
+            const time = new Date();
+            const type = get_element_type(event.target);
+            console.log('clicked ' + type + ' at ' + get_time());
+        });
+
+
+        window.addEventListener('load', function() {
+            const now = new Date();
+            console.log(get_time() + ' page viewed');
+        });
+
+
+
+        function analyze_text() {
+            const text = document.getElementById('input').value;
+            const letters = (text.match(/[a-zA-Z]/g) || []).length;
+
+            const words = (text.split(/\s+/) || []).filter(word => word.length > 0).length;
+
+            const spaces = (text.match(/\s/g) || []).length;
+
+            const newlines = (text.match(/\n/g) || []).length;
+
+            const special_symbols = (text.match(/[^a-zA-Z0-9\s]/g) || []).length;
+
+
+            const pronouns = ['i', 'you', 'he', 'she', 'it', 'we', 'they', 'me', 'him', 'her', 'us', 'them'];
+            const prepositions = ['in', 'on', 'at', 'by', 'for', 'with', 'to', 'from', 'of', 'about'];
+            const articles = ['a', 'an'];
+
+            const tokens = text.toLowerCase().split(/\s+/).filter(word => word.length > 0);
+            
+            const pronoun_counts = {};
+            pronouns.forEach(pronoun => pronoun_counts[pronoun] = 0); 
+            tokens.forEach(token => {
+                if (pronouns.includes(token)) {
+                    pronoun_counts[token]++;
+                }
+            });
+
+            let pro_output = '<h2>Pronoun Counts</h2><ul>';
+            for (const pronoun in pronoun_counts) {
+                if (pronoun_counts[pronoun] > 0) {
+                    pro_output += `<li>${pronoun}: ${pronoun_counts[pronoun]}</li>`;
+                }
+            }
+            pro_output += '</ul>';
+            
+
+            const prepo_counts = {};
+            prepositions.forEach(prep => prepo_counts[prep] = 0);
+            tokens.forEach(token => {
+                if (prepositions.includes(token)) {
+                    prepo_counts[token]++;
+                }
+            });
+            let prepo_out = '<h2>Preposition Counts</h2><ul>';
+            for (const prep in prepo_counts) {
+                if (prepo_counts[prep] > 0) {
+                    prepo_out += `<li>${prep}: ${prepo_counts[prep]}</li>`;
+                }
+            }
+            prepo_out += '</ul>';
+
+            const aritcle_count = {};
+            articles.forEach(article => aritcle_count[article] = 0);
+            tokens.forEach(token => {
+                if (articles.includes(token)) {
+                    aritcle_count[token]++;
+                }
+            });
+            let aritcle_out = '<h2>Indefinite Article Counts</h2><ul>';
+            for (const article in aritcle_count) {
+                if (aritcle_count[article] > 0) {
+                    aritcle_out += `<li>${article}: ${aritcle_count[article]}</li>`;
+                }
+            }
+            aritcle_out += '</ul>';
+
+            const output = `
+                <h2>Text Statistics :</h2>
+                <p>letters: ${letters}</p>
+                <p>words: ${words}</p>
+                <p>spaces: ${spaces}</p>
+                <p>newlines: ${newlines}</p>
+                <p>special symbols: ${special_symbols}</p>
+                ${pro_output}
+                ${prepo_out}
+                ${aritcle_out}
+            `;
+            document.getElementById('results').innerHTML = output;
+        }
+
+        
+    </script>
+</body>
+</html>

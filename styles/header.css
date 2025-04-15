@@ -1,0 +1,152 @@
+body {
+    margin: 0px;
+}
+
+
+
+header {
+     display: flex;                         /* Aligns children (h1, button, nav) in a row */
+    background-color: rgb(29, 29, 31);
+    color: #E8E8ED;
+    align-items: center;                   /* Vertically centers elements */   
+    justify-content: space-between;
+    cursor: default;
+    flex-wrap: wrap;                        /* f the items don’t fit in one row, move the extra items onto the next line */
+    flex-direction: row;
+}
+
+
+
+.welcome-text {
+    margin-left: 10px;
+}
+
+
+
+nav {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+
+}
+
+
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+nav a {
+    color: #E8E8ED;
+    margin-left: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    padding: 3px;
+    transition: all 0.15s;
+}
+
+
+
+nav a:hover {
+        background-color: #E8E8ED; 
+        color: rgb(29, 29, 31);
+}
+
+
+
+nav a:active {
+    opacity: 0.8;
+}
+
+
+
+
+.cv-link {
+    margin-right: 10px;
+}
+
+
+
+.menu-toggle {
+    display: none;      /* hidden on large screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #E8E8ED;
+    border-radius: 2px;
+    transition: all 0.15s;
+    margin: 2px;
+    cursor: pointer;
+}
+
+
+
+.menu-toggle:hover {
+    background: #E8E8ED;
+    border: none;
+    cursor: pointer;
+    color: rgb(29, 29, 31);
+}
+
+
+
+  
+
+@media (max-width: 480px) {
+
+    h2 {
+        font-size: 20px;
+    }
+    .header-left{
+        width: 100%;
+    }
+
+
+    .menu-toggle {
+      display: block;
+    }
+  
+    nav {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s linear;
+    }
+  
+    nav.show {
+        display: flex;
+        opacity: 1;
+        max-height: 500px; /* enough to show all links */
+    }
+  
+    nav.show a {
+      padding: 10px 0;
+    }
+
+    nav.show a:hover {
+        background-color: transparent;
+        color: white;   
+    }
+  
+    header {
+      align-items: flex-start;
+    }
+  }
+  
+
+
+
+@media (max-width: 240px) {
+    h2 {
+        font-size: 15px;
+    }
+
+}
